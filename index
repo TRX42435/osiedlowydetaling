@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Osiedlowy Detailing - Łomianki & Warszawa | Promo 100 zł</title>
+  <meta name="description" content="Młode wilki od czystych fur. Ręczne mycie, odkurzanie, plastiki, felgi. Promo: pakiet FULL 100 zł zamiast 150 zł. Działamy w Łomiankach i Warszawie."/>
+  <meta name="theme-color" content="#0b0f1a" />
+  <meta name="color-scheme" content="dark light" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    /* ===================================================================== */
+    /*  Osiedlowy Detailing - Minimal design system + helpers               */
+    /* ===================================================================== */
+    :root{
+      --bg:#0b0f1a;
+      --bg-soft:#0f1526;
+      --card:#11182b;
+      --muted:#7d8aa0;
+      --text:#e6ebf5;
+      --primary:#63e;
+      --accent:#39d98a;
+      --danger:#ff4d6d;
+      --warning:#ffcc00;
+      --shadow:0 10px 30px rgba(0,0,0,0.35);
+      --radius:22px;
+      --radius-sm:14px;
+      --radius-lg:32px;
+      --blur:10px;
+      --maxw:1200px;
+      --glass: rgba(255,255,255,0.04);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background: radial-gradient(1200px 600px at 10% -10%, #1a223a 0%, transparent 60%),
+                  radial-gradient(900px 500px at 100% 0%, #151b33 0%, transparent 50%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      overflow-x:hidden;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 20px}
+    .grid{display:grid;gap:24px}
+    .btn{
+      display:inline-flex;align-items:center;gap:10px;cursor:pointer;border:none;
+      padding:14px 20px;border-radius:var(--radius-sm);font-weight:700;
+      background:linear-gradient(180deg, #6a5cff, #4a3df0);color:#fff;
+      box-shadow:0 8px 20px rgba(102,51,238,0.35);
+      transition:transform .15s ease,box-shadow .2s ease,filter .2s ease;
+    }
+    .btn:hover{transform:translateY(-2px);filter:saturate(115%)}
+    .btn.secondary{
+      background:linear-gradient(180deg,#2a334d,#1b223a);
+      box-shadow:0 8px 20px rgba(0,0,0,0.35);
+    }
+    .chip{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,0.06);backdrop-filter:blur(var(--blur));border:1px solid rgba(255,255,255,0.08)}
+    .kbd{font-family:ui-monospace,Consolas,Menlo,monospace;padding:2px 8px;border-radius:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1)}
+    .nav{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,rgba(11,15,26,0.94),rgba(11,15,26,0.65),transparent);backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,0.06);}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:0.6px}
+    .logo{width:40px;height:40px;border-radius:12px;background:conic-gradient(from 180deg, #63e, #39d98a,#63e);box-shadow:0 8px 22px rgba(99,51,238,0.5)}
+    .nav-links{display:flex;gap:18px;align-items:center}
+    .nav-links a{opacity:.95;padding:8px 12px;border-radius:12px}
+    .theme-toggle{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);cursor:pointer}
+    .hero{padding:90px 0 40px}
+    .hero-wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:34px;align-items:center}
+    .hero h1{font-size:clamp(36px,5vw,62px);line-height:1.04;margin:0 0 14px}
+    .hero p{font-size:clamp(16px,2.2vw,20px);opacity:.95;margin:0 0 24px}
+    .badge-row{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 26px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .hero-card{padding:18px;border-radius:var(--radius);display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .stat{padding:16px;border-radius:16px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04)}
+    .tagline{font-weight:800;letter-spacing:0.6px}
+    .hero-img{position:relative;aspect-ratio:4/3;border-radius:var(--radius);overflow:hidden;border:1px solid rgba(255,255,255,0.08);background:radial-gradient(100% 100% at 0% 0%,rgba(99,51,238,0.25),transparent 60%),radial-gradient(100% 100% at 100% 100%,rgba(57,217,138,0.15),transparent 60%),linear-gradient(180deg,#0e1425,#0b0f1a)}
+    .hero-img .car{position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,0.03),transparent), url('https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;filter:saturate(110%) contrast(105%)}
+    .hero-img .shine{position:absolute;inset:auto -20% 20% -20%;height:120px;background:radial-gradient(60% 120px at 50% 50%, rgba(255,255,255,0.18), transparent 60%);mix-blend-mode:screen;animation:shine 3.5s linear infinite}
+    @keyframes shine{0%{transform:translateX(-40%)}100%{transform:translateX(120%)}}
+    .section{padding:70px 0}
+    .section h2{font-size: clamp(28px,4vw,42px);margin:0 0 10px}
+    .muted{color:var(--muted)}
+    .services{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .service{padding:20px;border-radius:var(--radius);position:relative;overflow:hidden}
+    .service h3{margin:0 0 6px;font-size:20px}
+    .service p{margin:0 0 14px;opacity:.95}
+    .pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .shot{aspect-ratio:1/1.1;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);position:relative}
+    .shot img{width:100%;height:100%;object-fit:cover;filter:saturate(110%)}
+    .shot .label{position:absolute;left:10px;bottom:10px;background:rgba(0,0,0,0.45);padding:6px 10px;border-radius:999px;font-size:12px}
+    .testimonials{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .quote{padding:18px;border-radius:18px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06)}
+    .banner{padding:18px;border:1px dashed rgba(255,255,255,0.12);border-radius:18px;background:linear-gradient(180deg,rgba(57,217,138,0.08),rgba(57,217,138,0.04))}
+    .faq{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    details{background:rgba(255,255,255,0.02);padding:14px 16px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+    summary{cursor:pointer;font-weight:700}
+    .booking{display:grid;grid-template-columns:1.2fr 1fr;gap:24px}
+    form{display:grid;gap:12px}
+    input,select,textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.03);color:var(--text)}
+    textarea{min-height:120px;resize:vertical}
+    .map{aspect-ratio:4/3;border-radius:18px;border:1px solid rgba(255,255,255,0.08);overflow:hidden;background:linear-gradient(180deg,#0d1222,#0b0f1a)}
+    .map .pin{position:absolute;width:18px;height:18px;border-radius:50%;background:var(--danger);box-shadow:0 0 0 8px rgba(255,77,109,0.2)}
+    footer{padding:60px 0;border-top:1px solid rgba(255,255,255,0.06);background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent)}
+    .toast{position:fixed;right:18px;bottom:18px;padding:14px 16px;border-radius:14px;background:rgba(0,0,0,0.75);color:#fff;box-shadow:var(--shadow);opacity:0;transform:translateY(10px);transition:.25s ease;z-index:100}
+    .toast.show{opacity:1;transform:translateY(0)}
+    .kbd-row{display:flex;gap:14px;flex-wrap:wrap}
+    .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:20px}
+    .foot-grid ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+    .mono{font-family:ui-monospace,Consolas,Menlo,monospace}
+    .small{font-size:12px;opacity:.85}
+    .pill{display:inline-block;padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.02)}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    @media (max-width:1000px){
+      .hero-wrap{grid-template-columns:1fr}
+      .services{grid-template-columns:repeat(2,1fr)}
+      .pricing{grid-template-columns:1fr 1fr}
+      .gallery{grid-template-columns:repeat(3,1fr)}
+      .testimonials{grid-template-columns:1fr 1fr}
+      .booking{grid-template-columns:1fr}
+      .faq{grid-template-columns:1fr}
+      .foot-grid{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width:640px){
+      .services{grid-template-columns:1fr}
+      .pricing{grid-template-columns:1fr}
+      .gallery{grid-template-columns:repeat(2,1fr)}
+      .testimonials{grid-template-columns:1fr}
+      .foot-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand" aria-label="Osiedlowy Detailing">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <div style="font-size:14px;opacity:.85">Łomianki & Warszawa</div>
+          <div style="font-size:18px">Osiedlowy Detailing</div>
+        </div>
+      </div>
+      <nav class="nav-links" aria-label="Główna nawigacja">
+        <a href="#uslugi">Usługi</a>
+        <a href="#ceny">Ceny</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#rezerwacja">Rezerwacja</a>
+        <a href="#faq">FAQ</a>
+        <button id="themeToggle" class="theme-toggle" aria-label="Przełącz motyw (J/N)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 3v2M12 19v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M3 12h2M19 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Z" stroke="currentColor" stroke-width="1.8"/></svg>
+        </button>
+        <a href="#rezerwacja" class="btn" style="padding:10px 14px">Zamów 🔥</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container" id="hero" aria-label="Sekcja startowa">
+      <div class="hero-wrap">
+        <div>
+          <div class="badge-row">
+            <span class="chip">💥 Promo: <span class="mono" style="margin-left:6px">FULL 100 zł</span> <span class="small" style="margin-left:6px">(zamiast 150 zł)</span></span>
+            <span class="chip">🧽 Od <strong>80 zł</strong></span>
+            <span class="chip">🚗 Dojazd na osiedle</span>
+          </div>
+          <h1 class="tagline">Czysta fura bez spiny. <span class="muted">Robimy robotę szybko i porządnie.</span></h1>
+          <p>Mamy 14 lat i zero ściemy. Ręczne mycie, wnętrze, felgi, plastiki—wszystko ogarniamy tak, żeby <em>było na błysk</em>, a nie na gadkę. Działamy w Łomiankach i północnej Warszawie.</p>
+          <div class="kbd-row" style="margin-top:8px">
+            <span class="kbd">J</span> / <span class="kbd">N</span> - motyw
+            <span class="kbd">G</span> - galeria
+            <span class="kbd">R</span> - rezerwacja
+          </div>
+          <div style="display:flex;gap:12px;margin-top:18px">
+            <a href="#rezerwacja" class="btn">Zarezerwuj termin</a>
+            <a href="#ceny" class="btn secondary">Zobacz ceny</a>
+          </div>
+
+          <div class="card hero-card" style="margin-top:22px">
+            <div class="stat"><h3>50+</h3><p>aut ogarniętych na osiedlach</p></div>
+            <div class="stat"><h3>~60-90 min</h3><p>zwykła robota na jedno auto</p></div>
+            <div class="stat"><h3>100 zł</h3><p>pakiet FULL w promocji</p></div>
+            <div class="stat"><h3>5★</h3><p>opinie sąsiadów i znajomych</p></div>
+          </div>
+        </div>
+
+        <div class="hero-img shine-border soft-shadow hover-rise" aria-label="Zdjęcie auta po detailingu">
+          <div class="car" aria-hidden="true"></div>
+          <div class="shine" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- USŁUGI -->
+    <section class="section container" id="uslugi">
+      <header style="margin-bottom:10px">
+        <h2>Usługi bez ściemy</h2>
+        <p class="muted">Pakiety prosto z podwórka - szybko, dokładnie, na błysk.</p>
+      </header>
+      <div class="services">
+        <article class="service card shine-border hover-rise"><h3>Mycie zewnętrzne</h3><p>Rękawica z mikrofibry, szampon, spłukiwanie, suszenie ręcznikiem premium.</p><div class="price"><span class="pill">od 30-40 zł</span></div></article>
+        <article class="service card shine-border hover-rise"><h3>Wnętrze basic</h3><p>Odkurzanie, szyby, plastiki na szybko, lekkie odświeżenie zapachem.</p><div class="price"><span class="pill">40-50 zł</span></div></article>
+        <article class="service card shine-border hover-rise"><h3>Pakiet FULL</h3><p>Zew + środek + felgi + opony. Robimy wszystko poza praniem tapicerki.</p><div class="price"><span class="strike">150 zł</span><span class="pill">100 zł</span></div></article>
+        <article class="service card shine-border hover-rise"><h3>Felgi + opony</h3><p>Domycie syfu z klocków, dressing na opony.</p><div class="price"><span class="pill">+20 zł</span></div></article>
+        <article class="service card shine-border hover-rise"><h3>Plastiki interior</h3><p>APC + pędzelki → plastiki czyste i matowe.</p><div class="price"><span class="pill">+20-30 zł</span></div></article>
+        <article class="service card shine-border hover-rise"><h3>Quick Detailer</h3><p>Po myciu, lakier dostaje połysku i krople lecą jak w teledysku.</p><div class="price"><span class="pill">+30-40 zł</span></div></article>
+      </div>
+    </section>
+
+    <!-- CENNIK -->
+    <section class="section container" id="ceny">
+      <header style="margin-bottom:10px">
+        <h2>Cennik z jajem</h2>
+        <p class="muted">Promka robi robotę. Bez kombinowania, wszystko czarno na białym.</p>
+      </header>
+      <div class="pricing">
+        <article class="plan card hover-rise">
+          <span class="chip">Budget</span>
+          <h3>Podstawka</h3>
+          <p class="muted">Mycie zewnętrzne albo wnętrze basic</p>
+          <ul>
+            <li>Ręczne mycie lub odkurz + szyby</li>
+            <li>Mikrofibry premium, zero rys</li>
+            <li>Czas: ~45 min</li>
+          </ul>
+          <div><span class="strike">50 zł</span><span class="pill">40 zł</span></div>
+          <a href="#rezerwacja" class="btn cta">Biorę</a>
+        </article>
+
+        <article class="plan card hover-rise popular">
+          <span class="chip">Najczęściej wybierany</span>
+          <h3>Pakiet FULL</h3>
+          <ul>
+            <li>Zew + środek + felgi + opony</li>
+            <li>Plastiki, szyby, odkurz, detale</li>
+            <li>Czas: ~60–90 min</li>
+          </ul>
+          <div><span class="strike">150 zł</span><span class="pill">100 zł</span></div>
+          <a href="#rezerwacja" class="btn cta">Biorę FULL</a>
+        </article>
+
+        <article class="plan card hover-rise">
+          <span class="chip">Elastyczny</span>
+          <h3>Custom</h3>
+          <p class="muted">Mieszaj dodatki jak chcesz.</p>
+          <ul>
+            <li>Felgi + opony (+20 zł)</li>
+            <li>Plastiki interior (+20-30 zł)</li>
+            <li>Quick Detailer (+30-40 zł)</li>
+          </ul>
+          <div><span class="pill">od 80 zł</span></div>
+          <a href="#rezerwacja" class="btn cta">Sklejam swój</a>
+        </article>
+      </div>
+      <div class="banner" style="margin-top:18px"><strong>Uczciwa gadka:</strong> jesteśmy młodzi, ale dokładni. Jeśli auto wymaga dużo roboty, uprzedzimy.</div>
+    </section>
+
+    <!-- GALERIA -->
+    <section class="section container" id="galeria">
+      <header style="margin-bottom:10px">
+        <h2>Galeria - przed / po</h2>
+        <p class="muted">Zdjęcia mówią wszystko. Zero filtra, zero ściemy.</p>
+      </header>
+      <div class="gallery">
+        <figure class="shot hover-rise"><img loading="lazy" src="" alt="Felgi po czyszczeniu"/><figcaption class="label">Felgi</figcaption></figure>
+        <figure class="shot hover-rise"><img loading="lazy" src="" alt="Lakier na połysk"/><figcaption class="label">Lakier</figcaption></figure>
+        <figure class="shot hover-rise"><img loading="lazy" src="" alt="Sedan po myciu"/><figcaption class="label">Sedan</figcaption></figure>
+        <figure class="shot hover-rise"><img loading="lazy" src="" alt="Szczegóły"/><figcaption class="label">Detale</figcaption></figure>
+        <figure class="shot hover-rise"><img loading="lazy" src="" alt="Wnętrze plastik"/><figcaption class="label">Wnętrze</figcaption></figure>
+        <figure class="shot hover-rise"><img loading="lazy" src="" alt="Kombi po ogarnięciu"/><figcaption class="label">Kombi</figcaption></figure>
+        <figure class="shot hover-rise"><img loading="lazy" src="" alt="Szyba"/><figcaption class="label">Szyby</figcaption></figure>
+        <figure class="shot hover-rise"><img loading="lazy" src="" alt="SUV po FULL"/><figcaption class="label">SUV</figcaption></figure>
+        <figure class="shot hover-rise"><img loading="lazy" src="" alt="Kokpit"/><figcaption class="label">Kokpit</figcaption></figure>
+        <figure class="shot hover-rise"><img loading="lazy" src="" alt="Reflektor"/><figcaption class="label">Reflektor</figcaption></figure>
+        <figure class="shot hover-rise"><img loading="lazy" src="" alt="Detail"/><figcaption class="label">Detail</figcaption></figure>
+      </div>
+
+      <div class="card" style="margin-top:18px;padding:16px;border-radius:18px">
+        <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+          <span class="chip">Chcesz swoje auto tutaj?</span>
+          <a href="#rezerwacja" class="btn">Zarezerwuj termin</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- OPINIE -->
+    <section class="section container" id="opinie">
+      <header style="margin-bottom:10px"><h2>Co mówią sąsiedzi</h2><p class="muted">Prosto z osiedla. Krótko i na temat.</p></header>
+      <div class="testimonials">
+        <blockquote class="quote"><p>„Chłopaki młodzi, ale robią dokładniej niż niejedna myjnia. Polecam.”</p><footer class="small">- Bartek, Dąbrowa</footer></blockquote>
+        <blockquote class="quote"><p>„Wpadli, ogarnęli SUV-a i nie zniszczyli nic. Szybko i za normalny hajs.”</p><footer class="small">- Kasia, Łomianki Centralne</footer></blockquote>
+        <blockquote class="quote"><p>„Pakiet FULL za stówkę? Biorę co miesiąc. Wnętrze pachnie i nie klei się.”</p><footer class="small">- Michał, Bielany</footer></blockquote>
+      </div>
+    </section>
+
+    <!-- REZERWACJA (FORMSPREE) -->
+    <section class="section container" id="rezerwacja">
+      <header style="margin-bottom:10px"><h2>Rezerwacja</h2><p class="muted">Działamy u Ciebie na podjeździe. Potrzebujemy tylko dostęp do wody - resztę mamy.</p></header>
+      <div class="booking">
+        <!-- Podpięty formularz (Formspree) --> 
+        <form id="bookForm" class="card shine-border" style="padding:18px" autocomplete="on" action="https://formspree.io/f/xnnbnjay" method="POST">
+          <input type="hidden" name="_subject" value="Nowa rezerwacja z osiedlowy-detailing.pl">
+          <label><span>Imię</span><input name="name" required placeholder="Twoje imię" /></label>
+          <label><span>Email (do potwierdzenia)</span><input type="email" name="email" placeholder="nazwisko@domena.pl" /></label>
+          <label><span>Telefon</span><input name="phone" required placeholder="123456789" pattern="[0-9\+\s-]{7,}" /></label>
+          <label><span>Adres (dzielnica / ulica)</span><input name="address" required placeholder="Łomianki, ul. ***" /></label>
+
+          <div class="grid" style="grid-template-columns:1fr 1fr">
+            <label><span>Data</span><input type="date" name="date" required /></label>
+            <label><span>Godzina</span><input type="time" name="time" required /></label>
+          </div>
+
+          <label><span>Pakiet</span>
+            <select name="package" required>
+              <option value="full">Pakiet FULL (100 zł)</option>
+              <option value="wash">Mycie zewnętrzne (40 zł)</option>
+              <option value="interior">Wnętrze basic (40–50 zł)</option>
+              <option value="custom">Custom (od 80 zł)</option>
+            </select>
+          </label>
+
+          <fieldset class="card" style="padding:12px;border-radius:12px">
+            <legend>Dodatki</legend>
+            <label style="display:flex;gap:8px;align-items:center"><input type="checkbox" name="wheels"/> Felgi + opony (+20 zł)</label>
+            <label style="display:flex;gap:8px;align-items:center"><input type="checkbox" name="plastics"/> Plastiki interior (+20–30 zł)</label>
+            <label style="display:flex;gap:8px;align-items:center"><input type="checkbox" name="qd"/> Quick Detailer (+30–40 zł)</label>
+          </fieldset>
+
+          <label><span>Notatki</span><textarea name="note" placeholder="Np. auto rodzinne, dużo piachu, proszę o zwrócenie uwagi na... "></textarea></label>
+
+          <div style="display:flex;gap:12px;align-items:center">
+            <button class="btn" type="submit">Wyślij zgłoszenie</button>
+            <button class="btn secondary" type="reset">Wyczyść</button>
+            <span class="small muted">Wysłanie formularza = oddzwonimy / odpiszemy.</span>
+          </div>
+
+          <!-- Honeypot (ukryte pole przeciw spamowi) -->
+          <div class="sr-only" aria-hidden="true"><label>Jeśli widzisz to pole, nie wypełniaj: <input name="_gotcha" /></label></div>
+        </form>
+
+        <aside>
+          <div class="card" style="padding:18px;border-radius:18px">
+            <h3>Gdzie działamy</h3>
+            <p class="muted">Łomianki, Dąbrowa, Kiełpin, Bielany, Młociny, Tarchomin, Bemowo i okolice.</p>
+            
+              </svg>
+              <div class="pin" style="position:absolute;left:58%;top:42%" title="Łomianki"></div>
+              <div class="pin" style="position:absolute;left:35%;top:65%" title="Bielany"></div>
+            </div>
+            <div style="margin-top:14px"><h4>Kontakt</h4><p class="mono">IG: @osiedlowy_detailing • tel: 123-456-789</p></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section container" id="faq">
+      <header style="margin-bottom:10px"><h2>FAQ — najczęstsze pytania</h2><p class="muted">Krótko, konkretnie, bez lania wody.</p></header>
+      <div class="faq">
+        <details><summary>Serio macie 14 lat? To legalne?</summary><p>Tak, to dorywcze usługi sąsiedzkie. Nie wystawiamy faktur, rozliczamy się prosto i uczciwie z klientami.</p></details>
+        <details><summary>Czy potrzebujemy dostępu do wody i prądu?</summary><p>Tak, prosimy o kran ogrodowy i gniazdko. Reszta jest w naszym zakresie.</p></details>
+        <details><summary>Ile trwa pakiet FULL?</summary><p>Typowo 60-90 minut, zależnie od stanu auta. Damy znać, jeśli zapowiada się dłużej.</p></details>
+        <details><summary>Robicie pranie tapicerki / polerkę?</summary><p>Na ten moment nie. Skupiamy się na myciu i odświeżeniu. Jak będzie popyt — rozbudujemy ofertę.</p></details>
+        <details><summary>Jak działa promka 100 zł?</summary><p>Regularna cena FULL to 150 zł, ale dla osiedla mamy stałe promo 100 zł. Uprzedzamy, gdy auto wymaga ponadstandardowego ogarnięcia.</p></details>
+        <details><summary>Jak płatność?</summary><p>Gotówka lub BLIK. Prosto i szybko.</p></details>
+        <details><summary>Czy dojeżdżacie poza listę dzielnic?</summary><p>Tak, w miarę możliwości. Przy większej odległości doliczamy symboliczne koszty dojazdu.</p></details>
+        <details><summary>Jakie macie środki i sprzęt?</summary><p>Bezpieczne szampony, mikrofibry premium, pędzelki detailingowe, APC, dressing do opon i quick detailer.</p></details>
+      </div>
+    </section>
+
+    <!-- DLACZEGO -->
+    <section class="section container" id="dlaczego">
+      <header style="margin-bottom:10px"><h2>Dlaczego my?</h2><p class="muted">Bo jest szybko, uczciwie i na błysk. A jak coś — mówisz, poprawiamy.</p></header>
+      <div class="grid" style="grid-template-columns:1fr 1fr 1fr">
+        <div class="card hover-rise" style="padding:18px"><h3>Uczciwa cena</h3><p>Komunikujemy „od 80 zł”, ale najczęściej FULL w promo to równa stówka.</p></div>
+        <div class="card hover-rise" style="padding:18px"><h3>Dojeżdżamy</h3><p>Masz podjazd? Wpadamy z wiadrem i robotą.</p></div>
+        <div class="card hover-rise" style="padding:18px"><h3>Dokładność</h3><p>Bezpieczne środki, pędzelki, technika—zero rys.</p></div>
+      </div>
+    </section>
+
+    <section class="section container" id="callout">
+      <div class="card shine-border" style="padding:22px;display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap">
+        <div><h3 style="margin:0 0 6px">Pakiet FULL za 100 zł — w tym tygodniu 🔥</h3><p class="muted" style="margin:0">Zadzwoń / napisz i ogarniemy termin, zanim promo zniknie.</p></div>
+        <div style="display:flex;gap:12px;align-items:center"><a href="#rezerwacja" class="btn">Rezerwuj</a><a href="#ceny" class="btn secondary">Cennik</a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container foot-grid">
+      <div>
+        <div class="brand" style="margin-bottom:10px"><div class="logo" aria-hidden="true"></div><div><div style="font-size:14px;opacity:.8">Łomianki & Warszawa</div><div style="font-size:18px">Osiedlowy Detailing</div></div></div>
+        <p class="muted small">Młode wilki od czystych fur. Ręczne mycie, wnętrze, detale. Uczciwie i bez spiny.</p>
+        <div style="display:flex;gap:10px;align-items:center;margin-top:8px"><span class="chip">IG: @osiedlowy_detailing</span><span class="chip">tel: 123-456-789</span><span class="chip">e-mail: osiedlowydetaling@gmail.com</span></div>
+      </div>
+      <div><h4>Menu</h4><ul><li><a href="#uslugi">Usługi</a></li><li><a href="#ceny">Ceny</a></li><li><a href="#galeria">Galeria</a></li><li><a href="#rezerwacja">Rezerwacja</a></li><li><a href="#faq">FAQ</a></li></ul></div>
+      <div><h4>Obszar</h4><ul><li>Łomianki</li><li>Bielany</li><li>Młociny</li><li>Tarchomin</li><li>Kiełpin, Dąbrowa</li></ul></div>
+      <div><h4>Shortcuty</h4><ul><li><a href="#hero">Do góry</a></li><li><a href="#opinie">Opinie</a></li><li><a href="#callout">Promo</a></li><li><a href="#rezerwacja">Rezerwacja</a></li></ul></div>
+    </div>
+    <div class="container" style="margin-top:16px"><p class="small muted">© <span id="year"></span> Osiedlowy Detailing.</p></div>
+  </footer>
+
+  <!-- Modal -->
+  <dialog id="modal" class="card" style="border:none;border-radius:20px;max-width:560px;width:calc(100% - 24px);background:linear-gradient(180deg,#121a31,#0b0f1a);color:var(--text);">
+    <form method="dialog" style="margin:0;padding:0">
+      <header style="display:flex;align-items:center;justify-content:space-between;padding:16px 16px 0 16px"><h3 style="margin:0">Zgłoszenie wysłane</h3><button value="cancel" style="background:transparent;border:none;color:var(--text);font-size:22px;cursor:pointer">×</button></header>
+      <div style="padding:16px"><p class="muted">Dzięki! Odezwiemy się jak najszybciej, żeby potwierdzić termin i szczegóły.</p><div id="modalSummary" class="mono" style="white-space:pre-wrap;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);padding:12px;border-radius:12px"></div></div>
+      <footer style="padding:0 16px 16px 16px"><button class="btn" value="ok">Spoko</button></footer>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    // Helpers
+    const $ = (q,ctx=document)=>ctx.querySelector(q);
+    const $$ = (q,ctx=document)=>Array.from(ctx.querySelectorAll(q));
+    $('#year').textContent = new Date().getFullYear();
+
+    // Smooth anchors
+    $$('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
+      const id = a.getAttribute('href'); if(id.length>1){ e.preventDefault(); const el=document.querySelector(id); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}); history.pushState(null,'',id); }
+    }));
+
+    // Theme toggle
+    const themeBtn = $('#themeToggle');
+    function setTheme(dark){
+      if(dark){ document.documentElement.style.setProperty('--bg','#0b0f1a'); document.documentElement.style.setProperty('--text','#e6ebf5'); }
+      else{ document.documentElement.style.setProperty('--bg','#f7f8fb'); document.documentElement.style.setProperty('--text','#0f1628'); }
+      document.body.style.background = dark ? 'radial-gradient(1200px 600px at 10% -10%, #1a223a 0%, transparent 60%),radial-gradient(900px 500px at 100% 0%, #151b33 0%, transparent 50%), var(--bg)' : 'radial-gradient(1200px 600px at 10% -10%, #d7dcff 0%, transparent 60%),radial-gradient(900px 500px at 100% 0%, #e3e8ff 0%, transparent 50%), var(--bg)';
+    }
+    let dark = (localStorage.getItem('theme')||'dark')==='dark';
+    setTheme(dark);
+    themeBtn.addEventListener('click',()=>{ dark=!dark; setTheme(dark); localStorage.setItem('theme',dark?'dark':'light'); toast(dark?'Motyw: ciemny':'Motyw: jasny'); });
+
+    // Keyboard shortcuts
+    window.addEventListener('keydown',e=>{ if(['j','J','n','N'].includes(e.key)) themeBtn.click(); if(['g','G'].includes(e.key)) document.querySelector('#galeria').scrollIntoView({behavior:'smooth'}); if(['r','R'].includes(e.key)) document.querySelector('#rezerwacja').scrollIntoView({behavior:'smooth'}); });
+
+    // Form submission (fetch -> Formspree) to keep user on page and show modal
+    const form = $('#bookForm'), modal = $('#modal'), modalSummary = $('#modalSummary');
+    form.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const phone = form.phone.value.trim();
+      if(!phone || phone.length<7){ return toast('Sprawdź numer telefonu'); }
+      const fd = new FormData(form);
+      try{
+        const res = await fetch(form.action, { method:'POST', headers:{'Accept':'application/json'}, body:fd });
+        if(res.ok){
+          const data = Object.fromEntries(fd.entries());
+          const extras = $$('input[type=\"checkbox\"]', form).filter(i=>i.checked).map(i=>i.name);
+          const lines = [
+            `Imię: ${data.name||''}`,
+            `Email: ${data.email||''}`,
+            `Telefon: ${data.phone||''}`,
+            `Adres: ${data.address||''}`,
+            `Data: ${data.date||''} ${data.time||''}`,
+            `Pakiet: ${data.package||''}`,
+            `Dodatki: ${extras.length? extras.join(', '): 'brak'}`,
+            `Notatki: ${data.note||'-'}`
+          ].join('\n');
+          modalSummary.textContent = lines;
+          modal.showModal();
+          toast('Zgłoszenie wysłane — dzięki!');
+          form.reset();
+        } else {
+          const json = await res.json().catch(()=>null);
+          console.error('Formspree error', json);
+          toast('Błąd wysyłki — spróbuj ponownie');
+        }
+      } catch(err){
+        console.error(err);
+        toast('Błąd sieci — sprawdź połączenie');
+      }
+    });
+
+    function toast(msg){ const el = $('#toast'); el.textContent = msg; el.classList.add('show'); setTimeout(()=>el.classList.remove('show'),3000); }
+
+    // Reveal animation
+    const observer = new IntersectionObserver((entries)=>{ entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.animate([{opacity:0, transform:'translateY(8px)'},{opacity:1, transform:'translateY(0)'}],{duration:500,easing:'ease-out'}); observer.unobserve(entry.target); } }); },{threshold:.15});
+    $$('.service, .plan, .shot, .quote, .card').forEach(el=>observer.observe(el));
+
+    // Modal close on outside click
+    modal?.addEventListener('click',(e)=>{ const r = modal.getBoundingClientRect(); if(!(e.clientX>=r.left&&e.clientX<=r.right&&e.clientY>=r.top&&e.clientY<=r.bottom)) modal.close(); });
+
+    // Light PWA hint (no-op SW)
+    if('serviceWorker' in navigator){ try{ const swCode = `self.addEventListener('install', e=>self.skipWaiting());self.addEventListener('activate', e=>clients.claim());`; const blob = new Blob([swCode], {type:'text/javascript'}); const url = URL.createObjectURL(blob); navigator.serviceWorker.register(url).catch(()=>{}); }catch(e){} }
+  </script>
+
+  <!-- Deployment notes:
+       - index.html -> push to GitHub + enable Pages OR drag to Netlify / Vercel
+       - Formspree: as long as endpoint https://formspree.io/f/xnnbnjay is active, wiadomości trafią na Twój formularz
+       - If you want an instant "thank-you" redirect instead of modal, add <input name="_next" value="https://twoja-strona/thanks"> inside form
+  -->
+
+</body>
+</html>
